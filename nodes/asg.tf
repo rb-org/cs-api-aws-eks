@@ -34,12 +34,21 @@ resource "aws_autoscaling_group" "main" {
     delete = "${var.timeouts}"
   }
 
-  tags = ["${merge(var.default_tags, 
-      map(
-        "Name", "${local.name_prefix}",
-        "Workspace", format("%s", terraform.workspace),
-        "kubernetes.io/cluster/${var.eks_cluster_name}", "owned",
-        "propagate_at_launch", true,
-        )
-      )}"]
+  tag {
+    key                 = "Name"
+    value               = "${local.name_prefix}"
+    propagate_at_launch = true
+  }
+
+  tag {
+    key                 = "Workspace"
+    value               = "${terraform.workspace}"
+    propagate_at_launch = true
+  }
+
+  tag {
+    key                 = "kubernetes.io/cluster/${var.eks_cluster_name}"
+    value               = "owned"
+    propagate_at_launch = true
+  }
 }
