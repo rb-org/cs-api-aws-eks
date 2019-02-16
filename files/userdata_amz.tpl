@@ -37,4 +37,12 @@ install_cw_agent(){
     sudo /opt/aws/amazon-cloudwatch-agent/bin/amazon-cloudwatch-agent-ctl -a fetch-config -m ec2 -c ssm:/$wkspc/cw_agent/$short_name -s
 }
 
+eks_bootstrap(){
+  /etc/eks/bootstrap.sh --apiserver-endpoint \
+    '${cluster_endpoint}' --b64-cluster-ca '${certificate_authority_data}' \
+    ${bootstrap_extra_args} '${cluster_name}'
+
+}
+
 install_cw_agent
+eks_bootstrap

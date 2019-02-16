@@ -3,6 +3,10 @@
 variable "ami_id" {}
 variable "instance_type" {}
 variable "eks_cluster_sg_id" {}
+variable "eks_cluster_name" {}
+variable "eks_cluster_endpoint" {}
+variable "eks_cluster_cert_auth_data" {}
+
 variable "iam_instance_profile" {}
 variable "key_name" {}
 
@@ -56,3 +60,57 @@ variable "private_subnets" {
 
 variable "vpc_id" {}
 variable "disable_api_termination" {}
+
+# ASG
+
+variable "asg_min_size" {
+  default = 1
+}
+
+variable "asg_max_size" {
+  default = 2
+}
+
+variable "asg_desired_size" {
+  default = 1
+}
+
+variable "health_check_grace_period" {
+  default = 300
+}
+
+variable "health_check_type" {
+  default = "EC2"
+}
+
+variable "force_delete" {
+  default = true
+}
+
+variable "default_cooldown" {
+  default = 60
+}
+
+variable "termination_policies" {
+  description = "OldestInstance, NewestInstance, OldestLaunchConfiguration, ClosestToNextInstanceHour, Default"
+  default     = "Default"
+}
+
+variable "enabled_metrics" {
+  description = "A list of metrics to collect"
+  default     = ["GroupMinSize", "GroupMaxSize", "GroupDesiredCapacity", "GroupInServiceInstances", "GroupPendingInstances", "GroupStandbyInstances", "GroupTerminatingInstances", "GroupTotalInstances"]
+}
+
+variable "wait_for_capacity_timeout" {
+  default = "5m"
+}
+
+variable "timeouts" {
+  default = "10m"
+}
+
+variable "bootstrap_extra_args" {
+  type        = "string"
+  default     = ""
+  description = "Passed to the bootstrap.sh script to enable --kublet-extra-args or --use-max-pods."
+}

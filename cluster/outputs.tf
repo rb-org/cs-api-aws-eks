@@ -11,3 +11,7 @@ output "kubeconfig_certificate_authority_data" {
 output "eks_cluster_sg_id" {
   value = "${aws_security_group.eks.id}"
 }
+
+output "name" {
+  value = "${aws_eks_cluster.main.name}"
+}
