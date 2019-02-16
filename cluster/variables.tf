@@ -1,15 +1,14 @@
 # Security Groups
 variable "tux_sg_id" {}
 
-# CS API
-variable "app_id" {
-  default = "cs-api"
-}
-
 # Networking
 variable "vpc_id" {}
 
 variable "public_subnets" {
+  type = "list"
+}
+
+variable "private_subnets" {
   type = "list"
 }
 

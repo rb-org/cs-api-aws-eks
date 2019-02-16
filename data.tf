@@ -1,9 +1,9 @@
-data "aws_ami" "eks_node" {
+data "aws_ami" "amz_eks_node" {
   most_recent = true
 
   filter {
     name   = "name"
-    values = ["ubuntu/images/hvm-ssd/ubuntu-bionic-18.04-amd64-server-*"]
+    values = ["amazon-eks-node-*-v*"]
   }
 
   filter {
@@ -11,12 +11,7 @@ data "aws_ami" "eks_node" {
     values = ["available"]
   }
 
-  # filter {
-  #   name   = "owner-alias"
-  #   values = ["canonical"]
-  # }
-
-  owners = ["099720109477"]
+  owners = ["602401143452"]
 }
 
 data "aws_region" "current" {}

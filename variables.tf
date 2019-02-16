@@ -13,7 +13,7 @@ variable "default_tags" {
   description = "Map of default tags applied to all resources"
 
   default = {
-    Github-Repo = "rb-org/cs-api-aws-ec2"
+    Github-Repo = "rb-org/cs-api-aws-eks"
     Terraform   = "true"
   }
 }
@@ -22,12 +22,8 @@ variable "remote_state_s3" {
   default = "xyz-tfm-state"
 }
 
-# EC2
+# EKS Nodes
 variable "instance_type" {
-  type = "map"
-}
-
-variable "instance_count" {
   type = "map"
 }
 
@@ -71,6 +67,3 @@ variable "disable_api_term" {
 variable "ebs_optimized" {
   type = "map"
 }
-
-# EKS 
-
