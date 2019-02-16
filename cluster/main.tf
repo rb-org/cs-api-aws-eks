@@ -1,4 +1,4 @@
-resource "aws_eks_cluster" "cs_api" {
+resource "aws_eks_cluster" "main" {
   name     = "${local.cluster_name}"
   role_arn = "${var.eks_cluster_role_arn}"
 
