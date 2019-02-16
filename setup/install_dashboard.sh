@@ -10,7 +10,7 @@ echo 'export PATH=/usr/local:$PATH' >> ~/.zshrc
 aws-iam-authenticator help
 
 # Update kube config
-aws eks --region eu-west-1 update-kubeconfig --name d020-eks-cs-api
+aws eks --region eu-west-1 update-kubeconfig --name d020-eks
 
 # Install dashboards
 kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v1.10.1/src/deploy/recommended/kubernetes-dashboard.yaml
@@ -19,7 +19,7 @@ kubectl apply -f https://raw.githubusercontent.com/kubernetes/heapster/master/de
 kubectl apply -f https://raw.githubusercontent.com/kubernetes/heapster/master/deploy/kube-config/rbac/heapster-rbac.yaml
 
 # Apply eks-admin service account
-kubectl apply -f eks-admin-service-account.yaml
+kubectl apply -f ./eks-admin-service-account.yaml
 
 # Connect to dashboard
 kubectl -n kube-system describe secret $(kubectl -n kube-system get secret | grep eks-admin | awk '{print $1}')
