@@ -27,6 +27,11 @@ module "nodes" {
   vpc_id          = "${data.terraform_remote_state.cs_api_base.vpc_id}"
   private_subnets = "${data.terraform_remote_state.cs_api_base.private_subnets_ids}"
 
+  # EKS Cluster
+  eks_cluster_name           = "${module.cluster.name}"
+  eks_cluster_endpoint       = "${module.cluster.endpoint}"
+  eks_cluster_cert_auth_data = "${module.cluster.kubeconfig_certificate_authority_data}"
+
   # Instance
   instance_type           = "${var.instance_type["eks_node"]}"
   iam_instance_profile    = "${module.iam.eks_node_profile_name}"
