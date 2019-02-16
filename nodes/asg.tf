@@ -38,8 +38,8 @@ resource "aws_autoscaling_group" "main" {
       map(
         "Name", "${local.name_prefix}",
         "Workspace", format("%s", terraform.workspace),
-        "kubernetes.io/cluster/${var.eks_cluster_name}", 
-        "owned", "propagate_at_launch", true,
+        "kubernetes.io/cluster/${var.eks_cluster_name}", "owned",
+        "propagate_at_launch", true,
         )
       )}"]
 }
