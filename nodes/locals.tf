@@ -7,4 +7,5 @@ locals {
   cw_agent_ssm_path    = "/${terraform.workspace}/cw_agent/${local.name_prefix}"
   log_group_name       = "/xyz/${local.name_prefix}-log-group"
   log_prefix           = "xyz"
+  sg_eks_name          = "${local.name_prefix}-sg"
 }
