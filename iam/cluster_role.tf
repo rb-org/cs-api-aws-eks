@@ -28,5 +28,6 @@ variable "eks_svc_managed_policy_arns" {
   default = [
     "arn:aws:iam::aws:policy/AmazonEKSServicePolicy",
     "arn:aws:iam::aws:policy/AmazonEKSClusterPolicy",
+    "arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryReadOnly",
   ]
 }
