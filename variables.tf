@@ -73,7 +73,7 @@ variable "create_elb_service_role" {
   type = "map"
 
   default = {
-    d020 = true
+    d020 = false
     t030 = false
     p040 = false
   }
