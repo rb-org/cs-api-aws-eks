@@ -11,7 +11,8 @@ module "cluster" {
   private_subnets = "${data.terraform_remote_state.cs_api_base.private_subnets_ids}"
 
   # Security Groups
-  tux_sg_id = "${data.terraform_remote_state.cs_api_base.tux_sg_id}"
+  tux_sg_id       = "${data.terraform_remote_state.cs_api_base.tux_sg_id}"
+  eks_nodes_sg_id = "${module.nodes.eks_nodes_sg_id}"
 
   # IAM
   eks_cluster_role_arn = "${module.iam.eks_cluster_role_arn}"

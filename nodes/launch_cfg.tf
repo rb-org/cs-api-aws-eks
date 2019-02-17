@@ -4,7 +4,7 @@ resource "aws_launch_configuration" "eks_node" {
   instance_type        = "${var.instance_type}"
   iam_instance_profile = "${var.iam_instance_profile}"
   key_name             = "${var.key_name}"
-  security_groups      = ["${var.tux_sg_id}", "${var.eks_cluster_sg_id}"]
+  security_groups      = ["${var.tux_sg_id}", "${aws_security_group.eks.id}"]
 
   lifecycle {
     create_before_destroy = true

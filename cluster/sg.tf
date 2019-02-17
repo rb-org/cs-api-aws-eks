@@ -10,7 +10,7 @@ resource "aws_security_group" "eks" {
 }
 
 ##########
-# Ingress
+# Ingress 
 ##########
 resource "aws_security_group_rule" "ir_eks_t" {
   type              = "ingress"
@@ -19,6 +19,15 @@ resource "aws_security_group_rule" "ir_eks_t" {
   protocol          = -1
   self              = true
   security_group_id = "${aws_security_group.eks.id}"
+}
+
+resource "aws_security_group_rule" "ir_eks_nodes_t" {
+  type                     = "ingress"
+  from_port                = 0
+  to_port                  = 0
+  protocol                 = -1
+  source_security_group_id = "${var.eks_nodes_sg_id}"
+  security_group_id        = "${aws_security_group.eks.id}"
 }
 
 #########

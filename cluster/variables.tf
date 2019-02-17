@@ -1,6 +1,8 @@
 # Security Groups
 variable "tux_sg_id" {}
 
+variable "eks_nodes_sg_id" {}
+
 # Networking
 variable "vpc_id" {}
 
