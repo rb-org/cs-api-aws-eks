@@ -67,3 +67,14 @@ variable "disable_api_term" {
 variable "ebs_optimized" {
   type = "map"
 }
+
+# Service Role
+variable "create_elb_service_role" {
+  type = "map"
+
+  default = {
+    d020 = true
+    t030 = false
+    p040 = false
+  }
+}

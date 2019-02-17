@@ -1,5 +1,7 @@
 module "iam" {
   source = "./iam"
+
+  create_elb_service_role = "${var.create_elb_service_role}"
 }
 
 module "cluster" {
