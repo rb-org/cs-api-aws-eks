@@ -5,7 +5,8 @@ resource "aws_security_group" "eks" {
   vpc_id      = "${var.vpc_id}"
 
   tags = "${merge(var.default_tags, map(
-      "Name", "${local.sg_eks_name}"
+      "Name", "${local.sg_eks_name}",
+      "kubernetes.io/cluster/${var.eks_cluster_name}", "owned"
     ))}"
 }
 
