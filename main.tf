@@ -46,6 +46,7 @@ module "nodes" {
   # Security Groups
   tux_sg_id         = "${data.terraform_remote_state.cs_api_base.tux_sg_id}"
   eks_cluster_sg_id = "${module.cluster.eks_cluster_sg_id}"
+  db_clients_sg_id  = "${data.terraform_remote_state.cs_api_base.db_clients_sg_id}"
 
   # Tags
   default_tags = "${var.default_tags}"

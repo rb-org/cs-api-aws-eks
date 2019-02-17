@@ -11,6 +11,7 @@ variable "iam_instance_profile" {}
 variable "key_name" {}
 
 variable "tux_sg_id" {}
+variable "db_clients_sg_id" {}
 
 variable "enable_monitoring" {
   default = true
