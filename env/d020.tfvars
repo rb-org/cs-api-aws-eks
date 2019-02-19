@@ -33,3 +33,7 @@ instance_type = {
 instance_count = {
   eks_node = 1
 }
+
+enable_cw_alarm_disk_asg = {
+  eks_node = true
+}

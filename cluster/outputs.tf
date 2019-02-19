@@ -15,3 +15,7 @@ output "eks_cluster_sg_id" {
 output "name" {
   value = "${aws_eks_cluster.main.name}"
 }
+
+output "arn" {
+  value = "${aws_eks_cluster.main.arn}"
+}

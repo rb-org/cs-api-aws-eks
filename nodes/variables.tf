@@ -45,7 +45,7 @@ variable "enable_cw_metrics" {}
 
 variable "enable_cw_alarm_cpu" {}
 
-variable "enable_cw_alarm_disk_tux" {}
+variable "enable_cw_alarm_disk_asg" {}
 
 variable "log_group_retention" {
   type = "map"
@@ -114,4 +114,53 @@ variable "bootstrap_extra_args" {
   type        = "string"
   default     = ""
   description = "Passed to the bootstrap.sh script to enable --kublet-extra-args or --use-max-pods."
+}
+
+variable "diskspace_disks" {
+  type    = "list"
+  default = ["nvme0n1p1"]
+}
+
+variable "disk_namespace" {
+  default = "CWAgent"
+}
+
+variable "disk_comparison_operator" {
+  default = "GreaterThanThreshold"
+}
+
+variable "disk_metric_desc" {
+  default = "Low Disk Space"
+}
+
+variable "disk_metric_name" {
+  default = "disk_used_percent"
+}
+
+variable "disk_threshold" {
+  default = "75"
+}
+
+variable "disk_unit" {
+  default = "Percent"
+}
+
+variable "path" {
+  default = ["/"]
+}
+
+variable "disk_evaluation_periods" {
+  default = "5"
+}
+
+variable "disk_datapoints_to_alarm" {
+  default = "5"
+}
+
+variable "disk_period" {
+  default = "60"
+}
+
+variable "disk_statistic" {
+  default = "Average"
 }
