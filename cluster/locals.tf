@@ -28,7 +28,7 @@ users:
       args:
       - token
       - -i
-      - ${aws_eks_cluster.main.name}
+      - "${aws_eks_cluster.main.name}"
       command: ${var.cluster_authenticator}
 KUBECFG
 
