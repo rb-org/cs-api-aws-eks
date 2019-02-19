@@ -76,6 +76,14 @@ jobs:
     steps:
       - checkout
       - run:
+        name: Install dependencies
+          chmod +x .circleci/install_awscli.sh
+          chmod +x .circleci/install_aws_iam_auth.sh
+          chmod +x .circleci/install_kubectl.sh
+          .circleci/install_awscli.sh
+          .circleci/install_aws_iam_auth.sh
+          .circleci/install_kubectl.sh
+      - run:
           name: export aws creds
           command: |
             chmod +x .circleci/export_aws.sh
