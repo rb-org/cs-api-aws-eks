@@ -11,7 +11,8 @@ resource "local_file" "kube_config" {
 resource "null_resource" "kube_cfg" {
   provisioner "local-exec" {
     command = <<COMMAND
-      cp ${path.root}/output/config ~/.kube/config \
+      mkdir ~/.kube \
+      && cp ${path.root}/output/config ~/.kube/config \
       && export KUBECONFIG=~/.kube/config \
       && kubectl ~/.kube/config use-context ${aws_eks_cluster.main.arn}
     COMMAND
