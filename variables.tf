@@ -43,7 +43,7 @@ variable "enable_cw_alarm_cpu" {
   type        = "map"
 }
 
-variable "enable_cw_alarm_disk_tux" {
+variable "enable_cw_alarm_disk_asg" {
   description = "If true, the launched EC2 instance will have create disk alarms"
   type        = "map"
 }
