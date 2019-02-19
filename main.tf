@@ -18,6 +18,7 @@ module "cluster" {
 
   # IAM
   eks_cluster_role_arn = "${module.iam.eks_cluster_role_arn}"
+  eks_node_role_arn    = "${module.iam.eks_node_role_arn}"
 
   # Tags
   default_tags = "${var.default_tags}"
@@ -59,12 +60,14 @@ module "nodes" {
   log_group_retention      = "${var.log_group_retention}"
 }
 
-module "setup" {
-  source = "./setup"
+# module "setup" {
+#   source = "./setup"
 
-  eks_node_role_arn = "${module.iam.eks_node_role_arn}"
-  cert_auth_data    = "${module.cluster.kubeconfig_certificate_authority_data}"
-  cluster_endpoint  = "${module.cluster.endpoint}"
-  cluster_arn       = "${module.cluster.arn}"
-  cluster_name      = "${module.cluster.name}"
-}
+
+#   eks_node_role_arn = "${module.iam.eks_node_role_arn}"
+#   cert_auth_data    = "${module.cluster.kubeconfig_certificate_authority_data}"
+#   cluster_endpoint  = "${module.cluster.endpoint}"
+#   cluster_arn       = "${module.cluster.arn}"
+#   cluster_name      = "${module.cluster.name}"
+# }
+

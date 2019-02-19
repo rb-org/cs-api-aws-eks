@@ -4,6 +4,34 @@ resource "null_resource" "kube_config" {
   }
 }
 
+locals {
+  apiVersion: v1
+clusters:
+- cluster:
+    certificate-authority-data: ${cert_auth_data}
+    server: ${cluster_endpoint}
+  name: ${cluster_arn}
+contexts:
+- context:
+    cluster: ${cluster_arn}
+    user: ${cluster_arn}
+  name: ${cluster_arn}
+current-context: ${cluster_arn}
+kind: Config
+preferences: {}
+users:
+- name: ${cluster_arn}
+  user:
+    exec:
+      apiVersion: client.authentication.k8s.io/v1alpha1
+      args:
+      - token
+      - -i
+      - ${cluster_name}
+      command: ${cluster_authenticator}
+}
+
+
 # resource "null_resource" "kube_config" {
 #   provisioner "local-exec" {
 #     command = <<COMMAND
@@ -21,6 +49,8 @@ resource "null_resource" "kube_config" {
 # }
 # data "template_file" "kube_config" {
 #   template = "${file("${path.module}/kube_config.tpl")}"
+
+
 #   vars = {
 #     cert_auth_data        = "${var.cert_auth_data}"
 #     cluster_endpoint      = "${var.cluster_endpoint}"

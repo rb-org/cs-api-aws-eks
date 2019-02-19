@@ -17,7 +17,14 @@ variable "private_subnets" {
 # IAM
 variable "eks_cluster_role_arn" {}
 
+variable "eks_node_role_arn" {}
+
 # Tags
 variable "default_tags" {
   type = "map"
+}
+
+# Kubectl
+variable "cluster_authenticator" {
+  default = "aws-iam-authenticator"
 }
