@@ -11,16 +11,21 @@ resource "local_file" "kube_config" {
 resource "null_resource" "kube_cfg" {
   provisioner "local-exec" {
     command = <<COMMAND
-      mkdir ~/.kube \
-      && cp ${path.root}/output/config ~/.kube/config \
-      && export KUBECONFIG=~/${path.root}/output/.kube/config \
-      && kubectl ~/.kube/config use-context ${aws_eks_cluster.main.arn}
+      aws eks --region ${local.region} update-kubeconfig --name ${aws_eks_cluster.main.name}
+      # mkdir ~/.kube \
+      # && cp ${path.root}/output/config ~/.kube/config \
+      # && export KUBECONFIG=~/${path.root}/output/.kube/config \
+      # && kubectl ~/.kube/config use-context ${aws_eks_cluster.main.arn}
     COMMAND
   }
 
   triggers {
     kubeconfig = "${local.kubeconfig}"
   }
+
+  depends_on = [
+    "local_file.kube_config",
+  ]
 }
 
 # Configure eks_admin
@@ -43,6 +48,7 @@ resource "null_resource" "eks_admin" {
   }
 
   depends_on = [
+    "local_file.eks_admin_svc_acc",
     "null_resource.kube_cfg",
   ]
 }
@@ -63,6 +69,7 @@ resource "null_resource" "aws_auth_cm" {
   }
 
   depends_on = [
+    "local_file.aws_auth_cm",
     "null_resource.kube_cfg",
   ]
 }
