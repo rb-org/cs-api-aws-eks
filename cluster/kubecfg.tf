@@ -13,7 +13,7 @@ resource "null_resource" "kube_cfg" {
     command = <<COMMAND
       mkdir ~/.kube \
       && cp ${path.root}/output/config ~/.kube/config \
-      && export KUBECONFIG=~/.kube/config \
+      && export KUBECONFIG=~/${path.root}/output/.kube/config \
       && kubectl ~/.kube/config use-context ${aws_eks_cluster.main.arn}
     COMMAND
   }
