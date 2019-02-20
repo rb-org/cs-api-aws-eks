@@ -76,13 +76,19 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Install dependencies
+          name: Install AWSCLI
           command: |
             chmod +x .circleci/install_awscli.sh
-            chmod +x .circleci/install_aws_iam_auth.sh
-            chmod +x .circleci/install_kubectl.sh
             .circleci/install_awscli.sh
+      - run:
+          name: Install AWS IAM Authenticator
+          command: |
+            chmod +x .circleci/install_aws_iam_auth.sh
             .circleci/install_aws_iam_auth.sh
+      - run:
+          name: Install Kubectl
+          command: |
+            chmod +x .circleci/install_kubectl.sh
             .circleci/install_kubectl.sh
       - run:
           name: export aws creds
@@ -92,10 +98,10 @@ jobs:
       - run: 
           name: Amazon EKS kubectl
           command: |
-            curl -o kubectl https://amazon-eks.s3-us-west-2.amazonaws.com/1.11.5/2018-12-06/bin/linux/amd64/kubectl
-            chmod +x ./kubectl
-            mkdir $HOME/bin && cp ./kubectl $HOME/bin/kubectl && export PATH=$HOME/bin:$PATH
-            echo 'export PATH=$HOME/bin:$PATH' >> ~/.bashrc
+            # curl -o kubectl https://amazon-eks.s3-us-west-2.amazonaws.com/1.11.5/2018-12-06/bin/linux/amd64/kubectl
+            # chmod +x ./kubectl
+            # mkdir $HOME/bin && cp ./kubectl $HOME/bin/kubectl && export PATH=$HOME/bin:$PATH
+            # echo 'export PATH=$HOME/bin:$PATH' >> ~/.bashrc
       - run: 
           name: version
           command: |

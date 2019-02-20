@@ -6,3 +6,4 @@ chmod +x ./kubectl
 cp ./kubectl /bin/kubectl
 export PATH=/bin:$PATH
 echo 'export PATH=/bin:$PATH' >> ~/.bashrc
+source ~/.bashrc
