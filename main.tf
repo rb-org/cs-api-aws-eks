@@ -59,15 +59,3 @@ module "nodes" {
   enable_cw_alarm_disk_asg = "${var.enable_cw_alarm_disk_asg["eks_node"]}"
   log_group_retention      = "${var.log_group_retention}"
 }
-
-# module "setup" {
-#   source = "./setup"
-
-
-#   eks_node_role_arn = "${module.iam.eks_node_role_arn}"
-#   cert_auth_data    = "${module.cluster.kubeconfig_certificate_authority_data}"
-#   cluster_endpoint  = "${module.cluster.endpoint}"
-#   cluster_arn       = "${module.cluster.arn}"
-#   cluster_name      = "${module.cluster.name}"
-# }
-
