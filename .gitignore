@@ -11,3 +11,6 @@
 env/secrets\.tfvars
 
 output/
+
+setup/
+_archive/
