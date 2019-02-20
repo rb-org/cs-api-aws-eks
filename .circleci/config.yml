@@ -80,16 +80,19 @@ jobs:
           command: |
             chmod +x .circleci/install_awscli.sh
             .circleci/install_awscli.sh
+            aws --version
       - run:
           name: Install AWS IAM Authenticator
           command: |
             chmod +x .circleci/install_aws_iam_auth.sh
             .circleci/install_aws_iam_auth.sh
+            aws-iam-authenticator help
       - run:
           name: Install Kubectl
           command: |
             chmod +x .circleci/install_kubectl.sh
             .circleci/install_kubectl.sh
+            kubectl version --short --client
       - run:
           name: export aws creds
           command: |
