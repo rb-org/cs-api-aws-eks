@@ -12,10 +12,6 @@ resource "null_resource" "kube_cfg" {
   provisioner "local-exec" {
     command = <<COMMAND
       aws eks --region ${local.region} update-kubeconfig --name ${aws_eks_cluster.main.name}
-      # mkdir ~/.kube \
-      # && cp ${path.root}/output/config ~/.kube/config \
-      # && export KUBECONFIG=~/${path.root}/output/.kube/config \
-      # && kubectl ~/.kube/config use-context ${aws_eks_cluster.main.arn}
     COMMAND
   }
 
