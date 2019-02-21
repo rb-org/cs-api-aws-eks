@@ -45,6 +45,10 @@ data:
       groups:
         - system:bootstrappers
         - system:nodes
+    - rolearn: "${var.codebuild_role_arn}"
+      username: build
+      groups:
+        - system:masters
 AWS_AUTH
 
   eks_admin_svc_acc = <<EKS_ADMIN

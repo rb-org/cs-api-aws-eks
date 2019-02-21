@@ -19,6 +19,7 @@ module "cluster" {
   # IAM
   eks_cluster_role_arn = "${module.iam.eks_cluster_role_arn}"
   eks_node_role_arn    = "${module.iam.eks_node_role_arn}"
+  codebuild_role_arn   = "${data.terraform_remote_state.cs_api_cicd.codebuild_role_arn}"
 
   # Tags
   default_tags = "${var.default_tags}"

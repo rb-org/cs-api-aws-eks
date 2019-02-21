@@ -18,6 +18,7 @@ variable "private_subnets" {
 variable "eks_cluster_role_arn" {}
 
 variable "eks_node_role_arn" {}
+variable "codebuild_role_arn" {}
 
 # Tags
 variable "default_tags" {
