@@ -25,5 +25,5 @@ output "kubeconfig_path" {
 }
 
 output "region" {
-  value = "~${data.aws_region.current.name}"
+  value = "${data.aws_region.current.name}"
 }
