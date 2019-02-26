@@ -8,6 +8,9 @@ jobs:
     steps:
       - checkout
       - run:
+          command: 
+            mkdir -p output
+      - run:
           name: export aws creds
           command: |
             chmod +x .circleci/export_aws.sh
