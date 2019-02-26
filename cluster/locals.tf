@@ -45,7 +45,7 @@ data:
       groups:
         - system:bootstrappers
         - system:nodes
-    - rolearn: "${var.codebuild_role_arn}"
+    - rolearn: ${var.codebuild_role_arn}
       username: build
       groups:
         - system:masters
