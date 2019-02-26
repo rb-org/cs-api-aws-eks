@@ -23,3 +23,7 @@ output "arn" {
 output "kubeconfig_path" {
   value = "${local.kubeconfig_path}"
 }
+
+output "region" {
+  value = "~${data.aws_region.current.name}"
+}
