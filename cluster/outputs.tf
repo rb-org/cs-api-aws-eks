@@ -19,3 +19,7 @@ output "name" {
 output "arn" {
   value = "${aws_eks_cluster.main.arn}"
 }
+
+output "kubeconfig_path" {
+  value = "${local.kubeconfig_path}"
+}
