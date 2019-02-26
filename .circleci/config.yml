@@ -8,8 +8,8 @@ jobs:
     steps:
       - checkout
       - run:
-        command: 
-          mkdir -p output
+          command: 
+            mkdir -p output
       - run:
           name: export aws creds
           command: |
