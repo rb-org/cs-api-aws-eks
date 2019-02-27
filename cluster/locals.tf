@@ -4,7 +4,7 @@ locals {
   cluster_name    = "${local.name_prefix}-eks"
   sg_eks_name     = "${local.cluster_name}-cluster-sg"
   sg_eks_api_name = "${local.cluster_name}-api-sg"
-  kubeconfig_path = "/${terraform.workspace}/eks/kubecfg"
+  kubeconfig_path = "${terraform.workspace}/eks/kubecfg"
 
   kubeconfig = <<KUBECFG
 apiVersion: v1
