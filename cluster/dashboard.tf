@@ -9,7 +9,10 @@ resource "null_resource" "dashboard" {
   }
 
   depends_on = [
-    "null_resource.kube_cfg",
-    "null_resource.eks_admin",
+    # "null_resource.kube_cfg",
+    # "null_resource.eks_admin",
+    "aws_eks_cluster.main",
+
+    "kubernetes_service_account.eks_admin",
   ]
 }
