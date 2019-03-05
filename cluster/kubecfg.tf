@@ -2,23 +2,30 @@
 # resource "local_file" "kube_config" {
 #   content  = "${local.kubeconfig}"
 #   filename = "${path.root}/output/config"
+
 #   depends_on = [
 #     "aws_eks_cluster.main",
 #   ]
 # }
-# resource "null_resource" "kube_cfg" {
-#   provisioner "local-exec" {
-#     command = <<COMMAND
-#       aws eks --region ${local.region} update-kubeconfig --name ${aws_eks_cluster.main.name}
-#     COMMAND
-#   }
-#   triggers {
-#     kubeconfig = "${local.kubeconfig}"
-#   }
-#   depends_on = [
-#     "local_file.kube_config",
-#   ]
-# }
+
+resource "null_resource" "kube_cfg" {
+  provisioner "local-exec" {
+    command = <<COMMAND
+      aws eks --region ${local.region} update-kubeconfig --name ${aws_eks_cluster.main.name}
+    COMMAND
+  }
+
+  # triggers {
+  #   kubeconfig = "${local.kubeconfig}"
+  # }
+
+  depends_on = [
+    "aws_eks_cluster.main",
+  ]
+
+  # "local_file.kube_config",
+}
+
 # # Configure eks_admin
 # resource "local_file" "eks_admin_svc_acc" {
 #   content  = "${local.eks_admin_svc_acc}"

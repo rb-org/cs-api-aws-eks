@@ -49,4 +49,9 @@ resource "kubernetes_config_map" "iam_nodes_config_map" {
     - system:masters
 ROLES
   }
+
+  depends_on = [
+    "aws_eks_cluster.main",
+    "null_resource.kube_cfg",
+  ]
 }

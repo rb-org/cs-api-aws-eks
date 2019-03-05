@@ -5,7 +5,7 @@ resource "kubernetes_service_account" "eks_admin" {
   }
 
   depends_on = [
-    #"null_resource.kube_cfg",
+    "null_resource.kube_cfg",
     "aws_eks_cluster.main",
   ]
 }
