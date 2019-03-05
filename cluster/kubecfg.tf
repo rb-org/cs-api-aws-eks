@@ -18,6 +18,9 @@ resource "null_resource" "kube_cfg" {
   # triggers {
   #   kubeconfig = "${local.kubeconfig}"
   # }
+  triggers {
+    build_number = "${timestamp()}"
+  }
 
   depends_on = [
     "aws_eks_cluster.main",
