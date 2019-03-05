@@ -11,13 +11,12 @@ resource "kubernetes_cluster_role_binding" "main" {
 
   subject {
     kind      = "ServiceAccount"
-    name      = "eks-admin"
-    api_group = "kube-system"
+    name      = "eks-admin2"
+    namespace = "kube-system"
   }
 
   depends_on = [
-    "null_resource.kube_cfg",
-    "aws_eks_cluster.main",
     "kubernetes_service_account.eks_admin",
+    "null_resource.kube_cfg",
   ]
 }

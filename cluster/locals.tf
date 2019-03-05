@@ -6,32 +6,32 @@ locals {
   sg_eks_api_name = "${local.cluster_name}-api-sg"
   kubeconfig_path = "${terraform.workspace}/eks/kubecfg"
 
-  #   kubeconfig = <<KUBECFG
-  # apiVersion: v1
-  # clusters:
-  # - cluster:
-  #     certificate-authority-data: ${aws_eks_cluster.main.certificate_authority.0.data}
-  #     server: ${aws_eks_cluster.main.endpoint}
-  #   name: ${aws_eks_cluster.main.arn}
-  # contexts:
-  # - context:
-  #     cluster: ${aws_eks_cluster.main.arn}
-  #     user: ${aws_eks_cluster.main.arn}
-  #   name: ${aws_eks_cluster.main.arn}
-  # current-context: ${aws_eks_cluster.main.arn}
-  # kind: Config
-  # preferences: {}
-  # users:
-  # - name: ${aws_eks_cluster.main.arn}
-  #   user:
-  #     exec:
-  #       apiVersion: client.authentication.k8s.io/v1alpha1
-  #       args:
-  #       - token
-  #       - -i
-  #       - "${aws_eks_cluster.main.name}"
-  #       command: ${var.cluster_authenticator}
-  # KUBECFG
+  #   #   kubeconfig = <<KUBECFG
+  #   # apiVersion: v1
+  #   # clusters:
+  #   # - cluster:
+  #   #     certificate-authority-data: ${aws_eks_cluster.main.certificate_authority.0.data}
+  #   #     server: ${aws_eks_cluster.main.endpoint}
+  #   #   name: ${aws_eks_cluster.main.arn}
+  #   # contexts:
+  #   # - context:
+  #   #     cluster: ${aws_eks_cluster.main.arn}
+  #   #     user: ${aws_eks_cluster.main.arn}
+  #   #   name: ${aws_eks_cluster.main.arn}
+  #   # current-context: ${aws_eks_cluster.main.arn}
+  #   # kind: Config
+  #   # preferences: {}
+  #   # users:
+  #   # - name: ${aws_eks_cluster.main.arn}
+  #   #   user:
+  #   #     exec:
+  #   #       apiVersion: client.authentication.k8s.io/v1alpha1
+  #   #       args:
+  #   #       - token
+  #   #       - -i
+  #   #       - "${aws_eks_cluster.main.name}"
+  #   #       command: ${var.cluster_authenticator}
+  #   # KUBECFG
 
   #   aws_auth_cm = <<AWS_AUTH
   # apiVersion: v1
@@ -51,7 +51,6 @@ locals {
   #       groups:
   #         - system:masters
   # AWS_AUTH
-
   #   eks_admin_svc_acc = <<EKS_ADMIN
   # apiVersion: v1
   # kind: ServiceAccount
