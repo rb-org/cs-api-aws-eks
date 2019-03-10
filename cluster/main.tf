@@ -7,9 +7,9 @@ resource "aws_eks_cluster" "main" {
     security_group_ids = ["${var.tux_sg_id}", "${aws_security_group.eks.id}", "${aws_security_group.eks_api.id}"]
   }
 
-  provisioner "local-exec" {
-    command = <<COMMAND
-      aws eks --region ${local.region} update-kubeconfig --name ${aws_eks_cluster.main.name}
-    COMMAND
-  }
+  # provisioner "local-exec" {
+  #   command = <<COMMAND
+  #     aws eks --region ${local.region} update-kubeconfig --name ${aws_eks_cluster.main.name}
+  #   COMMAND
+  # }
 }
